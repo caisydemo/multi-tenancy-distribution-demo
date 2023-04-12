@@ -1,0 +1,21 @@
+name: Deplpoy to Vercel
+on:
+  push:
+    branches:
+      - dev
+
+env:
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  VERCEL_NAME: "multi-tenancy-agency-demo"
+
+jobs:
+  vercel-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+      - name: Run deployment to vercel
+        run: vercel --prod --token=$VERCEL_TOKEN --confirm --no-clipboard --name="$VERCEL_NAME"
