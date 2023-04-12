@@ -11,6 +11,9 @@ env:
 jobs:
   vercel-deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project_name: ["multi-tenancy-agency-demo"]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -18,4 +21,4 @@ jobs:
           node-version: 16
           cache: "npm"
       - name: Run deployment to vercel
-        run: vercel --prod --token=$VERCEL_TOKEN --confirm --no-clipboard --name="$VERCEL_NAME"
+        run: vercel --prod --token=$VERCEL_TOKEN --confirm --no-clipboard --name="${{ matrix.project_name }}"
