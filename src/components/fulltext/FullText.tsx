@@ -1,6 +1,5 @@
 import { RichTextRenderer } from "@caisy/rich-text-react-renderer";
 import { FC } from "react";
-import { Asset } from "../Asset";
 import { CenterContainer } from "../CenterContainer";
 import { DocumentLink } from "./overwrites/DocumentLink";
 
@@ -8,7 +7,7 @@ interface IFullText {
   text?: any;
 }
 
-export const FullText: React.FC<IFullText> = ({ text }) => {
+export const FullText: FC<IFullText> = ({ text }) => {
   return (
     <CenterContainer>
       <article className="prose lg:prose-xl">
@@ -16,7 +15,6 @@ export const FullText: React.FC<IFullText> = ({ text }) => {
           <RichTextRenderer
             node={text?.json}
             overwrites={{
-              // @ts-ignore
               documentLink: (props) =>
                 props?.node && text?.connections ? (
                   <DocumentLink

@@ -6,14 +6,18 @@ on:
 
 env:
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-  VERCEL_NAME: "multi-tenancy-agency-demo"
 
 jobs:
   vercel-deploy:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project_name: ["multi-tenancy-agency-demo"]
+        project_name:
+          [
+            "multi-tenancy-agency-demo",
+            "agency-demo-client1",
+            "agency-demo-client2",
+          ]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
