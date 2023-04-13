@@ -1,5 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { initSdk, WebhookPayload, WebhookPayloadTrigger } from "@caisy/sdk";
+import {
+  initSdk,
+  ProjectWebhookPayload,
+  ProjectWebhookPayloadTrigger,
+} from "@caisy/sdk";
 
 const getEnvVar = (key: string) => {
   const value = process.env[key];
@@ -9,14 +13,8 @@ const getEnvVar = (key: string) => {
   return value;
 };
 
-const [
-  caisyWebhookSecret,
-  caisyProjectId,
-  caisyPersonalAccessToken,
-  caisyTanantsGroupId,
-] = [
+const [caisyWebhookSecret, caisyPersonalAccessToken, caisyTanantsGroupId] = [
   "CAISY_WEBHOOK_SECRET",
-  "CAISY_PROJECT_ID",
   "CAISY_PERSONAL_ACCESS_TOKEN",
   "TANANTS_GROUP_ID",
 ].map(getEnvVar);
@@ -37,13 +35,13 @@ export default async function handler(
     }
 
     // check type of trigger from caisy
-    const payload = req.body as WebhookPayload;
+    const payload = req.body as ProjectWebhookPayload;
 
     if (
       [
-        WebhookPayloadTrigger.BLUEPRINT_CREATE,
-        WebhookPayloadTrigger.BLUEPRINT_UPDATE,
-        WebhookPayloadTrigger.BLUEPRINT_DELETE,
+        ProjectWebhookPayloadTrigger.BLUEPRINT_CREATE,
+        ProjectWebhookPayloadTrigger.BLUEPRINT_UPDATE,
+        ProjectWebhookPayloadTrigger.BLUEPRINT_DELETE,
       ].includes(payload.webhook.trigger)
     ) {
       // we get all the projects for our tanants
@@ -67,7 +65,7 @@ export default async function handler(
                   blueprint: true,
                 },
                 source: {
-                  projectId: caisyProjectId,
+                  projectId: payload.scope.project_id,
                 },
               },
             })
