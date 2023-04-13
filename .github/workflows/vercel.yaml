@@ -13,11 +13,7 @@ jobs:
     strategy:
       matrix:
         project_name:
-          [
-            "multi-tenancy-agency-demo",
-            "agency-demo-client1",
-            "agency-demo-client2",
-          ]
+          ["multi-tenancy-distribution-demo", "davis-miami", "schmitt-berlin"]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
