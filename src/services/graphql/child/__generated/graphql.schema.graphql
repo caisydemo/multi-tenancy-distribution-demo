@@ -359,20 +359,6 @@ type BlogArticleGrid {
   _meta: CaisyDocument_Meta
 
   """"""
-  articles(
-    """
-    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
-    """
-    after: String
-
-    """The number of items to return. Default and max value is 100."""
-    first: Int = 100
-
-    """"""
-    locale: String
-  ): [BlogArticleGrid_articles]
-
-  """"""
   headline: String
 
   """"""
@@ -409,9 +395,6 @@ type BlogArticleGrid_ConnectionEdge {
 """"""
 input BlogArticleGrid_CreateInput {
   """"""
-  articles: [ID]
-
-  """"""
   headline: String
 
   """"""
@@ -424,9 +407,6 @@ input BlogArticleGrid_CreateInput {
 """"""
 input BlogArticleGrid_Sort {
   """"""
-  articles: Order
-
-  """"""
   headline: Order
 
   """"""
@@ -438,9 +418,6 @@ input BlogArticleGrid_Sort {
 
 """"""
 input BlogArticleGrid_UpdateInput {
-  """"""
-  articles: [ID]
-
   """"""
   headline: String
 
@@ -468,9 +445,6 @@ input BlogArticleGrid_Where {
   """"""
   titleInternal: CaisyField_String_Where
 }
-
-""""""
-union BlogArticleGrid_articles = BlogArticle
 
 """"""
 type BlogArticle_Connection {

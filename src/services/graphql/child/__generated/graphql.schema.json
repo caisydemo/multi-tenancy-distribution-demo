@@ -1433,59 +1433,6 @@
             "deprecationReason": null
           },
           {
-            "name": "articles",
-            "description": "",
-            "args": [
-              {
-                "name": "after",
-                "description": "The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "first",
-                "description": "The number of items to return. Default and max value is 100.",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "defaultValue": "100",
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "locale",
-                "description": "",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "UNION",
-                "name": "BlogArticleGrid_articles",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "headline",
             "description": "",
             "args": [],
@@ -1632,22 +1579,6 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "articles",
-            "description": "",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "ID",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "headline",
             "description": "",
             "type": {
@@ -1695,18 +1626,6 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "articles",
-            "description": "",
-            "type": {
-              "kind": "ENUM",
-              "name": "Order",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "headline",
             "description": "",
             "type": {
@@ -1753,22 +1672,6 @@
         "description": "",
         "fields": null,
         "inputFields": [
-          {
-            "name": "articles",
-            "description": "",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "ID",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
           {
             "name": "headline",
             "description": "",
@@ -1888,22 +1791,6 @@
         "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
-      },
-      {
-        "kind": "UNION",
-        "name": "BlogArticleGrid_articles",
-        "description": "",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": [
-          {
-            "kind": "OBJECT",
-            "name": "BlogArticle",
-            "ofType": null
-          }
-        ]
       },
       {
         "kind": "OBJECT",

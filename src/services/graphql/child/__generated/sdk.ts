@@ -196,18 +196,10 @@ export type IGenBlogArticleTextArgs = {
 export type IGenBlogArticleGrid = {
   __typename?: 'BlogArticleGrid';
   _meta?: Maybe<IGenCaisyDocument_Meta>;
-  articles?: Maybe<Array<Maybe<IGenBlogArticleGrid_Articles>>>;
   headline?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['ID']>;
   subheadline?: Maybe<Scalars['String']>;
   titleInternal?: Maybe<Scalars['String']>;
-};
-
-
-export type IGenBlogArticleGridArticlesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
 };
 
 export type IGenBlogArticleGrid_Connection = {
@@ -224,21 +216,18 @@ export type IGenBlogArticleGrid_ConnectionEdge = {
 };
 
 export type IGenBlogArticleGrid_CreateInput = {
-  articles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   headline?: InputMaybe<Scalars['String']>;
   subheadline?: InputMaybe<Scalars['String']>;
   titleInternal?: InputMaybe<Scalars['String']>;
 };
 
 export type IGenBlogArticleGrid_Sort = {
-  articles?: InputMaybe<IGenOrder>;
   headline?: InputMaybe<IGenOrder>;
   subheadline?: InputMaybe<IGenOrder>;
   titleInternal?: InputMaybe<IGenOrder>;
 };
 
 export type IGenBlogArticleGrid_UpdateInput = {
-  articles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   headline?: InputMaybe<Scalars['String']>;
   subheadline?: InputMaybe<Scalars['String']>;
   titleInternal?: InputMaybe<Scalars['String']>;
@@ -251,8 +240,6 @@ export type IGenBlogArticleGrid_Where = {
   subheadline?: InputMaybe<IGenCaisyField_String_Where>;
   titleInternal?: InputMaybe<IGenCaisyField_String_Where>;
 };
-
-export type IGenBlogArticleGrid_Articles = IGenBlogArticle;
 
 export type IGenBlogArticle_Connection = {
   __typename?: 'BlogArticle_Connection';
