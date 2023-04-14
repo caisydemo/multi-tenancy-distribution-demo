@@ -1,5 +1,5 @@
 import React from "react";
-import { IGenBlogArticle } from "../../services/graphql/__generated/sdk";
+import { IGenBlogArticle } from "../../services/graphql/child/__generated/sdk";
 
 export const ArticleCard: React.FC<IGenBlogArticle> = ({
   teaserImage,

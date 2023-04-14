@@ -1,5 +1,5 @@
 import React from "react";
-import { IGenFullwidthBlogTeaser } from "../services/graphql/__generated/sdk";
+import { IGenFullwidthBlogTeaser } from "../services/graphql/child/__generated/sdk";
 import { FullContainer } from "./FullContainer";
 
 export const FullwidthBlogTeaser: React.FC<IGenFullwidthBlogTeaser> = ({

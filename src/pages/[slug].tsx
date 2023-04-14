@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Page } from "../layouts/Page";
 import { getAllPages } from "../services/content/getAllPages";
 import { EPageType, getProps } from "../services/content/getProps";
-import { IGenPage } from "../services/graphql/__generated/sdk";
+import { IGenPage } from "../services/graphql/child/__generated/sdk";
 
 interface INextjsPage {
   Page?: IGenPage | null;
@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-  const resAllPages = await getAllPages({});
+  const resAllPages = await getAllPages();
 
   return {
     paths: resAllPages

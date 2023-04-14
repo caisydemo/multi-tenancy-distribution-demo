@@ -5,7 +5,7 @@ import { FullText } from "../components/fulltext/FullText";
 import { FullwidthBlogTeaser } from "../components/FullwidthBlogTeaser";
 import { Headline } from "../components/Headline";
 import { NewsletterSignup } from "../components/NewsletterSignup";
-import { IGenPage_Components } from "../services/graphql/__generated/sdk";
+import { IGenPage_Components } from "../services/graphql/child/__generated/sdk";
 
 interface IComponentSelector {
   component: IGenPage_Components;

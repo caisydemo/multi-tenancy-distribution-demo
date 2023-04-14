@@ -1,4 +1,4 @@
-import { caisySDK } from "../graphql/getSdk";
+import { childSDK } from "../graphql/child/getSdk";
 
 export type PageMeta = {
   __typename?: "Page";
@@ -15,8 +15,10 @@ export interface GetAllPages {
   arr?: PageMeta[];
 }
 
-export const getAllPages = async ({ after, arr = [] }: GetAllPages): Promise<PageMeta[]> => {
-  const { allPage } = await caisySDK.allPageMeta({ after });
+export const getAllPages = async (
+  { after, arr = [] } = {} as GetAllPages
+): Promise<PageMeta[]> => {
+  const { allPage } = await childSDK.allPageMeta({ after });
 
   allPage?.edges?.forEach((edge) => {
     edge?.node && arr.push(edge.node as PageMeta);

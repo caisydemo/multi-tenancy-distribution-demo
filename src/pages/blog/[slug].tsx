@@ -4,9 +4,9 @@ import Router from "next/router";
 import { useEffect } from "react";
 import { DefaultSpacer } from "../../components/DefaultSpacer";
 import { FullText } from "../../components/fulltext/FullText";
-import { getAllBlogArticles } from "../../services/content/getAllBlogArticle";
 import { EPageType, getProps } from "../../services/content/getProps";
-import { IGenBlogArticle } from "../../services/graphql/__generated/sdk";
+import { IGenBlogArticle } from "../../services/graphql/child/__generated/sdk";
+import { getAllBlogArticleMetaMerged } from "../../services/content/getAllBlogArticleMetaMerged";
 
 interface INextjsPage {
   BlogArticle?: IGenBlogArticle | null;
@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-  const resAllArticles = await getAllBlogArticles({});
+  const resAllArticles = await getAllBlogArticleMetaMerged();
 
   return {
     paths: resAllArticles?.map((page) => ({ params: { slug: page.slug } })),

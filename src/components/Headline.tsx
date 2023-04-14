@@ -1,5 +1,5 @@
 import React from "react";
-import { IGenHeadline } from "../services/graphql/__generated/sdk";
+import { IGenHeadline } from "../services/graphql/child/__generated/sdk";
 import { CenterContainer } from "./CenterContainer";
 
 export const Headline: React.FC<IGenHeadline> = ({ headline, subheadline }) => {

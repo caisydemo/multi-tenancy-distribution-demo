@@ -3,25 +3,25 @@ import { print } from "graphql";
 import { getSdk as getSdkWithClient, Requester } from "./__generated/sdk";
 
 const requester: Requester<any> = async (doc: any, vars: any) => {
-  const CAISY_PROJECT_ID = process.env.CAISY_PROJECT_ID;
-  const CAISY_API_KEY = process.env.CAISY_API_KEY;
+  const ROOT_PROJECT_ID = process.env.ROOT_PROJECT_ID;
+  const ROOT_API_KEY = process.env.ROOT_API_KEY;
   const NODE_ENV = process.env.NODE_ENV;
-  if (!CAISY_PROJECT_ID || CAISY_PROJECT_ID == "") {
+  if (!ROOT_PROJECT_ID || ROOT_PROJECT_ID == "") {
     throw new Error(
-      "CAISY_PROJECT_ID is not defined - please add it to the env file"
+      "ROOT_PROJECT_ID is not defined - please add it to the env file"
     );
   }
-  if (!CAISY_API_KEY || CAISY_API_KEY == "") {
+  if (!ROOT_API_KEY || ROOT_API_KEY == "") {
     throw new Error(
-      "CAISY_API_KEY is not defined - please add it to the env file"
+      "ROOT_API_KEY is not defined - please add it to the env file"
     );
   }
 
   const client = new GraphQLClient(
-    `https://cloud.caisy.io/api/v3/e/${CAISY_PROJECT_ID}/graphql`,
+    `https://cloud.caisy.io/api/v3/e/${ROOT_PROJECT_ID}/graphql`,
     {
       headers: {
-        "x-caisy-apikey": `${CAISY_API_KEY}`,
+        "x-caisy-apikey": `${ROOT_API_KEY}`,
       },
     }
   );
@@ -43,4 +43,4 @@ const requester: Requester<any> = async (doc: any, vars: any) => {
   }
 };
 
-export const caisySDK = getSdkWithClient(requester);
+export const rootSDK = getSdkWithClient(requester);

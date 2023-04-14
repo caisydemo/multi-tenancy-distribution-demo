@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from "react";
-import { IGenAsset } from "../../../services/graphql/__generated/sdk";
+import { IGenAsset } from "../../../services/graphql/child/__generated/sdk";
 import { Asset } from "../../Asset";
 
 interface IDocumentLink {

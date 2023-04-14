@@ -7,26 +7,26 @@ export const config: CodegenConfig = {
   ignoreNoDocuments: true,
   schema: [
     {
-      [`https://cloud.caisy.io/api/v3/e/${process.env.CAISY_PROJECT_ID}/graphql` ||
+      [`https://cloud.caisy.io/api/v3/e/${process.env.CHILD_PROJECT_ID}/graphql` ||
       ""]: {
         headers: {
-          "x-caisy-apikey": `${process.env.CAISY_API_KEY}`,
+          "x-caisy-apikey": `${process.env.CHILD_API_KEY}`,
         },
       },
     },
   ],
   generates: {
-    "src/services/graphql/__generated/graphql.schema.json": {
+    "src/services/graphql/child/__generated/graphql.schema.json": {
       plugins: ["introspection"],
     },
-    "src/services/graphql/__generated/graphql.schema.graphql": {
+    "src/services/graphql/child/__generated/graphql.schema.graphql": {
       plugins: ["schema-ast"],
     },
-    "src/services/graphql/__generated/sdk.ts": {
+    "src/services/graphql/child/__generated/sdk.ts": {
       documents: [
-        "src/services/graphql/**/*.graphql",
-        "src/services/graphql/fragments/**/*.ts",
-        "src/services/graphql/queries/**/*.ts",
+        "src/services/graphql/child/**/*.graphql",
+        "src/services/graphql/child/fragments/**/*.ts",
+        "src/services/graphql/child/queries/**/*.ts",
       ],
       plugins: [
         "typescript",

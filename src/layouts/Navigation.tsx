@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { IGenNavigation } from "../services/graphql/__generated/sdk";
+import { IGenNavigation } from "../services/graphql/child/__generated/sdk";
 import { useRouter } from "next/router";
 
 export const Navigation: React.FC<IGenNavigation> = ({ entries, homePage }) => {

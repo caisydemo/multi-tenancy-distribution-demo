@@ -1,4 +1,7 @@
-import { caisySDK } from "../graphql/getSdk";
+import { IGenBlogArticle } from "../graphql/child/__generated/sdk";
+import { childSDK } from "../graphql/child/getSdk";
+import { getAllBlogArticleMerged } from "./getAllBlogArticleMerged";
+import { getBlogArticleBySlug } from "./getBlogArticleBySlug";
 
 export enum EPageType {
   Default = 1,
@@ -14,8 +17,8 @@ export const getProps = async ({
   slug?: string;
   pageType?: EPageType;
 }) => {
-  const navigationRequest = caisySDK.Navigation();
-  const footerRequest = caisySDK.Footer();
+  const navigationRequest = childSDK.Navigation();
+  const footerRequest = childSDK.Footer();
 
   if (slug === undefined && pageType == EPageType.Index) {
     const Navigation = (await navigationRequest)?.Navigation;
@@ -37,15 +40,11 @@ export const getProps = async ({
   }
 
   const BlogArticle =
-    pageType == EPageType.Blog
-      ? (await caisySDK
-          .allBlogArticleBySlug({ slug })
-          .then((r) => r.allBlogArticle?.edges?.[0]?.node)) ?? null
-      : null;
+    pageType == EPageType.Blog ? await getBlogArticleBySlug(slug) : null;
 
   const Page =
     pageType != EPageType.Blog
-      ? (await caisySDK
+      ? (await childSDK
           .allPageBySlug({ slug })
           .then((r) => r.allPage?.edges?.[0]?.node)) ?? null
       : null;
@@ -53,6 +52,25 @@ export const getProps = async ({
   const Navigation = (await navigationRequest)?.Navigation;
 
   const redirectHome = Page?.slug === Navigation?.homePage?.slug;
+
+  // if the page has a component of blog article grid we will append all blog articles to that component
+  let allBlogArticles: IGenBlogArticle[] | undefined = undefined;
+
+  if (Page?.components?.find((c) => c?.__typename === "BlogArticleGrid")) {
+    if (!allBlogArticles) {
+      allBlogArticles = await getAllBlogArticleMerged();
+    }
+
+    Page.components = Page.components.map((c) => {
+      if (c?.__typename === "BlogArticleGrid") {
+        return {
+          ...c,
+          articles: allBlogArticles ?? [],
+        };
+      }
+      return c;
+    });
+  }
 
   return {
     redirectHome,

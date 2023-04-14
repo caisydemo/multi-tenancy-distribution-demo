@@ -4,7 +4,7 @@ import Router from "next/router";
 import { useEffect } from "react";
 import { Page } from "../layouts/Page";
 import { EPageType, getProps } from "../services/content/getProps";
-import { IGenPage } from "../services/graphql/__generated/sdk";
+import { IGenPage } from "../services/graphql/child/__generated/sdk";
 
 interface INextjsPage {
   Page?: IGenPage | null;

@@ -1,5 +1,5 @@
 import React from "react";
-import { IGenNewsletterSignup } from "../services/graphql/__generated/sdk";
+import { IGenNewsletterSignup } from "../services/graphql/child/__generated/sdk";
 import { CenterContainer } from "./CenterContainer";
 
 export const NewsletterSignup: React.FC<IGenNewsletterSignup> = ({

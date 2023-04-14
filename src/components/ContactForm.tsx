@@ -1,5 +1,5 @@
 import React from "react";
-import { IGenContactForm } from "../services/graphql/__generated/sdk";
+import { IGenContactForm } from "../services/graphql/child/__generated/sdk";
 import { CenterContainer } from "./CenterContainer";
 
 export const ContactForm: React.FC<IGenContactForm> = ({ headline }) => {

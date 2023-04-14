@@ -1,10 +1,5 @@
 # Simple blog starter template with Next.js and caisy
 
-Deploy this template to Vercel
-<br>
-<br>
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcaisy-io%2Fstarter-template-next-simple-blog&env=CAISY_PROJECT_ID,CAISY_API_KEY&envDescription=CAISY_PROJECT_ID%20and%20CAISY_API_KEY%20is%20required%20for%20the%20tempalte%20to%20work&envLink=https%3A%2F%2Fcaisy.io%2Fdeveloper%2Fdocs%2Fauthentication%2Fapi-keys&project-name=caisy-next-simple-blog&repository-name=caisy-next-simple-blog&demo-title=caisy-next-simple-blog&demo-description=Example%20Deployment%20of%20this%20Template&demo-url=https%3A%2F%2Fcaisy-next-simple-blog.vercel.app)
-
 ### Features
 
 - ✅ 100/100 Lighthouse performance
@@ -12,16 +7,6 @@ Deploy this template to Vercel
 - ✅ Dynamic content updates from caisy without redeployment
 - ✅ Sitemap support
 - ✅ Robots.txt support
-
-## Requirements
-
-In order to have the right blueprints configured, make sure to follow the onboarind on [caisy.io](https://caisy.io/) and select the starter template _"Simple Blog"_
-To run this project a `.env.local` file like this (with your own projects values) is required:
-
-```
-CAISY_PROJECT_ID=a894c383-edfc-4499-a639-a40509986ed4
-CAISY_API_KEY=xxx
-```
 
 ### To run this project locally
 

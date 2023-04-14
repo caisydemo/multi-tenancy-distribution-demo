@@ -1,6 +1,6 @@
-import { getAllBlogArticles } from "../services/content/getAllBlogArticle";
+import { getAllBlogArticleMetaMerged } from "../services/content/getAllBlogArticleMetaMerged";
 import { getAllPages } from "../services/content/getAllPages";
-import { caisySDK } from "../services/graphql/getSdk";
+import { childSDK } from "../services/graphql/child/getSdk";
 
 const Sitemap = () => {
   return null;
@@ -10,11 +10,11 @@ export const getServerSideProps = async ({ req }) => {
   const baseUrl = `https://${
     req.headers["host"] || req.headers["x-forwarded-host"]
   }`;
-  const navigationRequest = caisySDK.Navigation();
+  const navigationRequest = childSDK.Navigation();
 
-  const [allPages, allBlogArticles] = await Promise.all([
-    getAllPages({}),
-    getAllBlogArticles({}),
+  const [allPages, allBlogArticleMeta] = await Promise.all([
+    getAllPages(),
+    getAllBlogArticleMetaMerged(),
   ]);
 
   const navigation = (await navigationRequest)?.Navigation;
@@ -54,7 +54,7 @@ export const getServerSideProps = async ({ req }) => {
           `</url>`
         );
       }),
-    ...allBlogArticles
+    ...allBlogArticleMeta
       .map(({ slug, _meta }) => {
         const priority = 0.8;
 

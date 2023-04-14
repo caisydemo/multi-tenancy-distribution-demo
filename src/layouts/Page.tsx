@@ -1,5 +1,5 @@
 import React from "react";
-import { IGenPage } from "../services/graphql/__generated/sdk";
+import { IGenPage } from "../services/graphql/child/__generated/sdk";
 import { ComponentSelector } from "./ComponentSelector";
 
 export const Page: React.FC<IGenPage> = (props) => {

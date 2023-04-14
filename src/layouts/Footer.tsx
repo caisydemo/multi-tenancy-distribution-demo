@@ -1,6 +1,6 @@
 import { RichTextRenderer } from "@caisy/rich-text-react-renderer";
 import React from "react";
-import { IGenFooter } from "../services/graphql/__generated/sdk";
+import { IGenFooter } from "../services/graphql/child/__generated/sdk";
 
 export const Footer: React.FC<IGenFooter> = ({ content }) => {
   return (

@@ -1,4 +1,4 @@
-import { caisySDK } from "../graphql/getSdk";
+import { childSDK } from "../../graphql/child/getSdk";
 
 export type BlogArticleMeta = {
   __typename?: "BlogArticle";
@@ -15,15 +15,17 @@ export interface GetAllBlogArticles {
   arr?: BlogArticleMeta[];
 }
 
-export const getAllBlogArticles = async ({ after, arr = [] }: GetAllBlogArticles): Promise<BlogArticleMeta[]> => {
-  const { allBlogArticle } = await caisySDK.allBlogArticleMeta({ after });
+export const getAllBlogArticleMeta = async (
+  { after, arr = [] } = {} as GetAllBlogArticles
+): Promise<BlogArticleMeta[]> => {
+  const { allBlogArticle } = await childSDK.allBlogArticleMeta({ after });
 
   allBlogArticle?.edges?.forEach((edge) => {
     edge?.node && arr.push(edge.node);
   });
 
   if (allBlogArticle?.pageInfo?.hasNextPage) {
-    return await getAllBlogArticles({
+    return await getAllBlogArticleMeta({
       after: allBlogArticle?.pageInfo?.endCursor ?? undefined,
       arr,
     });

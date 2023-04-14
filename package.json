@@ -7,9 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "gen": "graphql-codegen -r dotenv/config --config codegen.ts && graphql-codegen -r dotenv/config --config codegen-root.ts",
-    "gen:watch": "graphql-codegen --watch --config codegen.ts",
-    "genroot:watch": "graphql-codegen --watch --config codegen-root.ts",
+    "gen": "graphql-codegen -r dotenv/config --config codegen-child.ts && graphql-codegen -r dotenv/config --config codegen-root.ts",
+    "gen:root:watch": "graphql-codegen --watch --config codegen-root.ts",
+    "gen:child:watch": "graphql-codegen --watch --config codegen-child.ts",
     "lint": "next lint"
   },
   "dependencies": {

@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { IGenSeoInformation } from "../services/graphql/__generated/sdk";
+import { IGenSeoInformation } from "../services/graphql/child/__generated/sdk";
 
 interface IDocument {
   seo?: IGenSeoInformation | null;
