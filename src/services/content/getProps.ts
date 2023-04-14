@@ -61,11 +61,22 @@ export const getProps = async ({
       allBlogArticles = await getAllBlogArticleMerged();
     }
 
+    const teaserdArticleIds = Page.components
+      .map((c) => {
+        if (c?.__typename === "FullwidthBlogTeaser") {
+          return c.featuredArticle?.id;
+        }
+      })
+      .filter((id) => id !== undefined);
+
     Page.components = Page.components.map((c) => {
       if (c?.__typename === "BlogArticleGrid") {
         return {
           ...c,
-          articles: allBlogArticles ?? [],
+          articles:
+            allBlogArticles?.filter(
+              (article) => !teaserdArticleIds.includes(article.id)
+            ) ?? [],
         };
       }
       return c;

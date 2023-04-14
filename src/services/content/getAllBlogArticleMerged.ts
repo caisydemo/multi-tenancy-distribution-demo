@@ -8,12 +8,6 @@ export const getAllBlogArticleMerged = async (): Promise<IGenBlogArticle[]> => {
     getAllBlogArticleFromRoot(),
   ]);
 
-  childArticles.map((article) => {
-    console.log(`childArticles article.slug`, article.slug);
-  });
-  rootArticles.map((article) => {
-    console.log(`rootArticles article.slug`, article.slug);
-  });
   // filter out duplicates in rootArticles
   // and sort by publsihed at data
   const arr = [
